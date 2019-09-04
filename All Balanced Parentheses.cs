@@ -11,15 +11,15 @@ public static List<string> BalancedParens(int n)
 {
     var combo = new List<string>();
     
-  	void compute(int left, int right, string str)
-  	{
-    		if (left == 0 && right == 0)
+    void compute(int left, int right, string str)
+    {
+        if (left == 0 && right == 0)
         {
-		        combo.Add(str);
-      			return;
-    		}
-  
-     		if (left > 0) compute(left-1, right+1, str+"(");
+            combo.Add(str);
+            return;
+        }
+        
+        if (left > 0) compute(left-1, right+1, str+"(");
         if (right > 0) compute(left, right-1, str+")"); 
     }
     
