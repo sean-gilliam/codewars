@@ -1,5 +1,7 @@
 /*
-John and Mary want to travel between a few towns A, B, C ... Mary has on a sheet of paper a list of distances between these towns. ls = [50, 55, 57, 58, 60]. John is tired of driving and he says to Mary that he doesn't want to drive more than t = 174 miles and he will visit only 3 towns.
+Difficulty: 5kyu 
+URL: https://www.codewars.com/kata/55e7280b40e1c4a06d0000aa
+Description: John and Mary want to travel between a few towns A, B, C ... Mary has on a sheet of paper a list of distances between these towns. ls = [50, 55, 57, 58, 60]. John is tired of driving and he says to Mary that he doesn't want to drive more than t = 174 miles and he will visit only 3 towns.
 
 Which distances, hence which towns, they will choose so that the sum of the distances is the biggest possible
 
@@ -22,30 +24,31 @@ xs = [50] choose_best_sum(163, 3, xs) -> nil (or null or ... or -1 (C++, C, Rust
 
 ys = [91, 74, 73, 85, 73, 81, 87] choose_best_sum(230, 3, ys) -> 228
 */
-public int? chooseBestSum(int t, int k, params int?[] ls)
+public int? chooseBestSum(int t, int k, List<int> ls)
 {
-	int size = ls.Length;
-	IEnumerable<IEnumerable<int?>> Combinations(IEnumerable<int?> list, int n)
-	{
-		int skip = 1;
-		var current = list.Take(size - k + 1).Select(x => new[] { x });
-		foreach (var head in current)
-		{
-			if (n == 1)
-				yield return head;
-			else
-			{
-				foreach (var tail in Combinations(list.Skip(skip), n - 1))
-					yield return head.Concat(tail);
-
-				skip++;
-			}
-		}
-	}
-
-	var combinations = Combinations(ls, k);
-	return combinations
-		.Select(x => x.Sum())
-		.Where(x => x <= t)
-		.Max();
+    if(t < 0 || k < 1 || ls.Count < 1)
+        return (int?)null;
+      
+    int size = ls.Count;
+    IEnumerable<IEnumerable<int>> Combinations(IEnumerable<int> list, int n)
+    {
+        int skip = 1;
+        var current = list.Take(size - k + 1).Select(x => new[] { x });
+        foreach (var head in current)
+        {
+            if (n == 1)
+                yield return head;
+            else
+            {
+                foreach (var tail in Combinations(list.Skip(skip), n - 1))
+                    yield return head.Concat(tail);
+                
+                skip++;
+            }
+        }
+    }
+    
+    var combinations = Combinations(ls, k);
+    var sums = combinations.Select(x => x.Sum()).Where(x => x <= t);
+    return sums.Any() ? sums.Max() : (int?)null;
 }

@@ -1,5 +1,8 @@
 /*
-The prime numbers are not regularly spaced. For example from 2 to 3 the step is 1. From 3 to 5 the step is 2. From 7 to 11 it is 4. Between 2 and 50 we have the following pairs of 2-steps primes:
+Difficulty: 6kyu 
+URL: https://www.codewars.com/kata/steps-in-primes
+Notes: TODO Works for some test cases not all
+Description: The prime numbers are not regularly spaced. For example from 2 to 3 the step is 1. From 3 to 5 the step is 2. From 7 to 11 it is 4. Between 2 and 50 we have the following pairs of 2-steps primes:
 
 3, 5 - 5, 7, - 11, 13, - 17, 19, - 29, 31, - 41, 43
 

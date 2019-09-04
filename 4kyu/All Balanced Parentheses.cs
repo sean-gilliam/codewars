@@ -1,5 +1,7 @@
 /*
-Write a function which makes a list of strings representing all of the ways you can balance n pairs of parentheses
+Difficulty: 4kyu 
+URL: https://www.codewars.com/kata/5426d7a2c2c7784365000783
+Description: Write a function which makes a list of strings representing all of the ways you can balance n pairs of parentheses
 
 Examples
 BalancedParens(0) returns List<string> with element:  ""
