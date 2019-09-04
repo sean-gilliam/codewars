@@ -11,9 +11,6 @@ rgb(148, 0, 211) // returns 9400D3
 
 public string rgb(int r, int g, int b)
 {
-	var validRange = Enumerable.Range(0, 256);
-	Func<int, string> getHex = x => (!validRange.Any(y => y == x) ? "00" : x.ToString("X2"));
-	
-	return getHex(r) + getHex(g) + getHex(b);
+    Func<int, string> hex = x => Math.Min(255, Math.Max(x, 0)).ToString("X2");
+    return hex(r) + hex(g) + hex(b);
 }
-
