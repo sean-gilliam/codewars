@@ -48,7 +48,7 @@ You can see more examples in "RUN SAMPLE TESTS".
 */
 public string squaresInRect(int lng, int wdth)
 {
-    if(lng < 2 || wdth < 2 || lng == wdth)
+    if(lng == wdth)
         return null;
 
     var squares = new List<int>();
