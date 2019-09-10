@@ -23,7 +23,6 @@ public static bool is_valid_IP(string ipAddres)
 	if(string.IsNullOrWhiteSpace(ipAddres) || ipAddres.Count(x => x == '.') != 3)
 		return false;
 
-	System.Console.WriteLine(ipAddres);
 	var segments = ipAddres.Split(new[] {'.'});
 	if(segments.Any(x => string.IsNullOrWhiteSpace(x) || (x.StartsWith("0") && x.Length > 1)) || !segments.SelectMany(x => x).All(c => char.IsDigit(c)))
 	   return false;
